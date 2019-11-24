@@ -15,12 +15,10 @@ class ObjectiveCProvider {
 		for (const projectPath of atom.project.getPaths()) {
 			await this.headersModel.search(projectPath);
 		}
-		console.log(this.headersModel.headers);
 	}
 
 	getSuggestions({ editor, bufferPosition, scopeDescriptor, prefix, activatedManually }) {
 		const suggestions = this.headersModel.lookForSuggestion(prefix);
-		console.log(suggestions);
 		return suggestions.map(x => x.value());
 	}
 }

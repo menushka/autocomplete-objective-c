@@ -26,19 +26,21 @@ export default class HeadersModel {
   lookForSuggestion(prefix) {
     let suggestions = [];
     for (const header of this.headers) {
-      if (header.match(prefix)) {
-        suggestions.push(new Suggestion(header.name, Suggestion.Type.Class));
-      }
-
-      for (const property of header.properties) {
-        if (property.match(prefix)) {
-          suggestions.push(new Suggestion(property.name, Suggestion.Type.Property, property.type));
+      for (const headerClass of header.classes) {
+        if (headerClass.match(prefix)) {
+          suggestions.push(new Suggestion(headerClass.name, Suggestion.Type.Class));
         }
-      }
 
-      for (const method of header.methods) {
-        if (method.match(prefix)) {
-          suggestions.push(new Suggestion(method.name, Suggestion.Type.Method, method.type));
+        for (const property of headerClass.properties) {
+          if (property.match(prefix)) {
+            suggestions.push(new Suggestion(property.name, Suggestion.Type.Property, property.type));
+          }
+        }
+
+        for (const method of headerClass.methods) {
+          if (method.match(prefix)) {
+            suggestions.push(new Suggestion(method.name, Suggestion.Type.Method, method.type));
+          }
         }
       }
     }
