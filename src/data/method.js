@@ -17,7 +17,7 @@ export default class Method {
 
   processArguments(arguments) {
     let args = [];
-    while ((match = Regex.OBJECTIVE_C_METHODS_ARGUMENTS.exec(arguments)) != null) {
+    for (const match of Regex.match(arguments, Regex.OBJECTIVE_C_METHODS_ARGUMENTS)) {
       args.push(new Argument(match[1], match[2], match[3]));
     }
     return args;

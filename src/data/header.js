@@ -26,17 +26,15 @@ export default class Header {
 
   // Private
   parseName(text) {
-    const match = Regex.OBJECTIVE_C_INTERFACE_NAME.exec(text);
-    if (match != null && match.length > 0) {
+    for (const match of Regex.match(text, Regex.OBJECTIVE_C_INTERFACE_NAME)) {
       return match[1];
-    } else {
-      return '';
     }
+    return ''
   }
 
   parseProperties(text) {
     let properties = [];
-    while ((match = Regex.OBJECTIVE_C_PROPERTIES.exec(text)) != null) {
+    for (const match of Regex.match(text, Regex.OBJECTIVE_C_PROPERTIES)) {
       properties.push(new Property(match[1], match[2], match[3]));
     }
     return properties;
@@ -44,7 +42,7 @@ export default class Header {
 
   parseMethods(text) {
     let methods = [];
-    while ((match = Regex.OBJECTIVE_C_METHODS.exec(text)) != null) {
+    for (const match of Regex.match(text, Regex.OBJECTIVE_C_METHODS)) {
       methods.push(new Method(match[1], match[2], match[3], match[4]));
     }
     return methods;

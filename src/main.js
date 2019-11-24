@@ -2,7 +2,7 @@
 
 import HeadersModel from "./models/headersModel"
 
-class BasicProvider {
+class ObjectiveCProvider {
 	constructor() {
 		this.selector = '.source.objc';
 
@@ -15,6 +15,7 @@ class BasicProvider {
 		for (const projectPath of atom.project.getPaths()) {
 			await this.headersModel.search(projectPath);
 		}
+		console.log(this.headersModel.headers);
 	}
 
 	getSuggestions({ editor, bufferPosition, scopeDescriptor, prefix, activatedManually }) {
@@ -26,6 +27,6 @@ class BasicProvider {
 
 module.exports = {
   getProvider() {
-    return new BasicProvider();
+    return new ObjectiveCProvider();
   }
 }
