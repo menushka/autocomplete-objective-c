@@ -1,0 +1,24 @@
+{
+  "name": "autocomplete-objective-c",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/main",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Menushka Weeratunga <contact@menushka.ca> (https://menushka.ca)",
+  "license": "ISC",
+  "engines": {
+    "atom": ">=1.15.0 <2.0.0"
+  },
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "4.0.0": "provide"
+      }
+    }
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
+  }
+}
