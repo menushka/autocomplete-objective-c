@@ -5,8 +5,9 @@ import Method from './method';
 import Regex from './regex';
 
 export default class Class {
-  constructor(name, body) {
+  constructor(name, subClass, instanceVariables, body) {
     this.name = name;
+    this.subClass = subClass
     this.properties = [];
     this.methods = [];
 

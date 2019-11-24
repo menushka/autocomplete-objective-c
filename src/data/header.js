@@ -18,7 +18,7 @@ export default class Header {
   parseClasses(text) {
     let classes = [];
     for (const match of Regex.match(text, Regex.OBJECTIVE_C_CLASS)) {
-      classes.push(new Class(match[1], match[2]));
+      classes.push(new Class(match[1], match[2], match[3], match[4]));
     }
     return classes;
   }
