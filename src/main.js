@@ -15,6 +15,10 @@ class ObjectiveCProvider {
 		for (const projectPath of atom.project.getPaths()) {
 			await this.headersModel.search(projectPath);
 		}
+
+		for (const searchPath of atom.config.get('autocomplete-objective-c.headerSearchPaths')) {
+			await this.headersModel.search(searchPath)
+		}
 	}
 
 	getSuggestions({ editor, bufferPosition, scopeDescriptor, prefix, activatedManually }) {
@@ -24,6 +28,17 @@ class ObjectiveCProvider {
 }
 
 module.exports = {
+	config: {
+    headerSearchPaths: {
+			title: 'List of paths to search for Objective C headers',
+			description: '',
+      type: 'array',
+      default: [],
+			items: {
+				type: 'string'
+			}
+		}
+	},
   getProvider() {
     return new ObjectiveCProvider();
   }
