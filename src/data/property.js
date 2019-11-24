@@ -6,4 +6,8 @@ export default class Property {
     this.type = type;
     this.name = name;
   }
+
+  match(prefix) {
+    return this.name.toLowerCase().includes(prefix.toLowerCase());
+  }
 }

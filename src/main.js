@@ -18,8 +18,9 @@ class BasicProvider {
 	}
 
 	getSuggestions({ editor, bufferPosition, scopeDescriptor, prefix, activatedManually }) {
-		const suggestions = this.headersModel.lookForSuggestion(prefix).map(x => { text: x });
-		return suggestions;
+		const suggestions = this.headersModel.lookForSuggestion(prefix);
+		console.log(suggestions);
+		return suggestions.map(x => x.value());
 	}
 }
 

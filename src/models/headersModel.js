@@ -5,6 +5,7 @@ import path from 'path';
 import glob from 'glob';
 
 import Header from '../data/header';
+import Suggestion from '../data/suggestion';
 
 export default class HeadersModel {
   constructor() {
@@ -15,29 +16,29 @@ export default class HeadersModel {
     return new Promise((resolve) => {
       glob(path.join(searchPath, '**/*.h'), {}, (error, files) => {
         for (const file of files) {
-          this.headers.push(new Header(file))
+          this.headers.push(new Header(file));
         }
-        resolve()
+        resolve();
       });
     })
   }
 
   lookForSuggestion(prefix) {
-    let suggestions = []
+    let suggestions = [];
     for (const header of this.headers) {
-      if (header.name.includes(prefix)) {
-        suggestion.push(header.name)
+      if (header.match(prefix)) {
+        suggestions.push(new Suggestion(header.name, Suggestion.Type.Class));
       }
 
       for (const property of header.properties) {
-        if (property.name.includes(prefix)) {
-          suggestion.push(property.name)
+        if (property.match(prefix)) {
+          suggestions.push(new Suggestion(property.name, Suggestion.Type.Property, property.type));
         }
       }
 
       for (const method of header.methods) {
-        if (method.name.includes(prefix)) {
-          suggestion.push(method.name)
+        if (method.match(prefix)) {
+          suggestions.push(new Suggestion(method.name, Suggestion.Type.Method, method.type));
         }
       }
     }

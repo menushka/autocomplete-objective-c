@@ -20,9 +20,14 @@ export default class Header {
     this.methods = this.parseMethods(rawText)
   }
 
+  match(prefix) {
+    return this.name.toLowerCase().includes(prefix.toLowerCase());
+  }
+
+  // Private
   parseName(text) {
     const match = Regex.OBJECTIVE_C_INTERFACE_NAME.exec(text);
-    if (match.length > 0) {
+    if (match != null && match.length > 0) {
       return match[1];
     } else {
       return '';
