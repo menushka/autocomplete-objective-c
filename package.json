@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/main",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Menushka Weeratunga <contact@menushka.ca> (https://menushka.ca)",
   "license": "ISC",
@@ -20,5 +20,8 @@
   },
   "dependencies": {
     "glob": "^7.1.6"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
   }
 }
