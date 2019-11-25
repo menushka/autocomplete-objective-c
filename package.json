@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/main",
   "scripts": {
-    "test": "jest"
+    "test": "atom --test ."
   },
   "author": "Menushka Weeratunga <contact@menushka.ca> (https://menushka.ca)",
   "license": "ISC",
@@ -21,7 +21,5 @@
   "dependencies": {
     "glob": "^7.1.6"
   },
-  "devDependencies": {
-    "jest": "^24.9.0"
-  }
+  "devDependencies": {}
 }

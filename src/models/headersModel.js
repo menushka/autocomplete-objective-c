@@ -12,11 +12,15 @@ export default class HeadersModel {
     this.headers = [];
   }
 
+  searchFile(searchPath) {
+    this.headers.push(new Header(searchPath));
+  }
+
   async search(searchPath) {
     return new Promise((resolve) => {
       glob(path.join(searchPath, '**/*.h'), {}, (error, files) => {
         for (const file of files) {
-          this.headers.push(new Header(file));
+          this.searchFile(file);
         }
         resolve();
       });
